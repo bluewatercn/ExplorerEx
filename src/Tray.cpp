@@ -6672,7 +6672,7 @@ LRESULT CTray::v_WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             }
             else
             {
-                BandSite_HandleMessage(_ptbs, hwnd, uMsg, wParam, lParam, &lres);
+                _ContextMenu((DWORD)lParam, FALSE);
             }
         }
         break;
