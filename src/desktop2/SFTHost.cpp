@@ -218,7 +218,7 @@ LRESULT SFTBarHost::_OnNcCreate(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
         (void *)SetWindowLongPtr(hwnd, 0,(LONG_PTR)self);
 
         self->_hwnd = hwnd;
-        self->_hTheme = pspld->hTheme;
+        self->_hTheme = NULL;
 
         if (FAILED(self->Initialize()))
         {
