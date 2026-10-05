@@ -6009,14 +6009,6 @@ void CTaskBand::_OpenTheme()
     _hwnd,
     c_wzTaskBandTheme,
     0);
-    if (_hTheme)
-{
-    MessageBoxW(NULL, L"TaskBand: custom theme OK", L"Theme", MB_OK);
-}
-else
-{
-    MessageBoxW(NULL, L"TaskBand: custom theme FAILED", L"Theme", MB_OK);
-}
 
     TBMETRICS tbm;
     _GetToolbarMetrics(&tbm);

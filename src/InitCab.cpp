@@ -1921,8 +1921,9 @@ int ExplorerWinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPTSTR pszCmdLine, int
         // Turn off GDI batching so that paints are performed immediately
         GdiSetBatchLimit(1);
 #endif
+        #define REGSTR_PATH_EXPLOREREX             TEXT("Software\\ExplorerEx")
 
-        RegCreateKey(HKEY_CURRENT_USER, REGSTR_PATH_EXPLORER, &g_hkeyExplorer);
+        RegCreateKey(HKEY_CURRENT_USER, REGSTR_PATH_EXPLOREREX, &g_hkeyExplorer);
         if (g_hkeyExplorer == NULL)
         {
         }
