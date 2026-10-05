@@ -394,7 +394,7 @@ HFONT CTray::_CreateStartFont(HWND hwndTray)
 	HFONT hfontStart = NULL;
 
 	//HTHEME hthemeStart = OpenThemeData(hwndTray, L"Button");
-	HTHEME hthemeStart = OpenThemeDataFromFile(OpenThemeDataFromFile,hwndTray, L"Button",0);
+	HTHEME hthemeStart = OpenThemeDataFromFile(g_loadedTheme,hwndTray, L"Button",0);
 
 	if (hthemeStart)
 	{

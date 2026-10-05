@@ -122,7 +122,7 @@ LRESULT CClockCtl::_HandleCreate()
 
     _EnsureFontsInitialized(FALSE);
 
-   //1 _hTheme = OpenThemeData(_hwnd, L"Clock");
+   // _hTheme = OpenThemeData(_hwnd, L"Clock");
     _hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwnd, L"Clock",0);
 
 
@@ -736,8 +736,7 @@ void CClockCtl::_HandleThemeChanged(WPARAM wParam)
     if (wParam)
     {
        // _hTheme = OpenThemeData(_hwnd, L"Clock");
-        _hTheme = OpenThemeData(g_loadedTheme,_hwnd, L"Clock",0);
-
+        _hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwnd, L"Clock",0);
     }
     InvalidateRect(_hwnd, NULL, TRUE);
 }
