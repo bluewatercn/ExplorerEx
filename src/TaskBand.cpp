@@ -5831,8 +5831,11 @@ int CTaskBand::_GetCurButtonHeight()
     _GetToolbarMetrics(&tbm);
 
     int cyButtonHeight = HIWORD(_tb.GetButtonSize());
-    if (!cyButtonHeight)
-        cyButtonHeight = tbm.cyPad + g_cySize;
+
+    int cyExpected = g_cySize + 8;
+
+    if (cyButtonHeight < cyExpected)
+        cyButtonHeight = cyExpected;
 
     return cyButtonHeight;
 }

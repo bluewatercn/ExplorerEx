@@ -76,11 +76,12 @@ void ThemeManagerInitialize()
 		wprintf(L"LOADTHEMEFILE FAILED %x\n", hr);
 	
 	//test
+	/*
 	MessageBoxW(
     NULL,
     g_loadedTheme ? L"Luna.msstyles loaded" : L"Luna.msstyles FAILED",
     L"ThemeManager",
-    MB_OK);	
+    MB_OK);	*/
 }
 
 HRESULT LoadThemeFile(wchar_t* Path)
