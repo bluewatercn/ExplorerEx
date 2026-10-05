@@ -6003,7 +6003,12 @@ void CTaskBand::_OpenTheme()
         _hTheme = NULL;
     }
 
-    _hTheme = OpenThemeData(_hwnd, c_wzTaskBandTheme);
+   // _hTheme = OpenThemeData(_hwnd, c_wzTaskBandTheme);
+   _hTheme = OpenThemeDataFromFile(
+    g_loadedTheme,
+    _hwnd,
+    c_wzTaskBandTheme,
+    0);
 
     TBMETRICS tbm;
     _GetToolbarMetrics(&tbm);
