@@ -7,6 +7,7 @@
 #include "shellapi.h"
 #include "shundoc.h"
 #include "cocreateinstancehook.h"
+#include "ThemeManager.h"
 
 //
 // Tray Notify Icon area implementation notes / details:
@@ -4003,7 +4004,9 @@ void CTrayNotify::_UpdateChevronSize()
 {
     if (_hTheme)
     {
-        HTHEME hTheme = OpenThemeData(_hwndChevron, L"Button");
+        //HTHEME hTheme = OpenThemeData(_hwndChevron, L"Button");
+        HTHEME hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwndChevron, L"Button",0);
+
         if (hTheme)
         {
             HDC hdc = GetDC(_hwndChevron);
@@ -4098,7 +4101,9 @@ void CTrayNotify::_OpenTheme()
         CloseThemeData(_hTheme);
         _hTheme = NULL;
     }
-    _hTheme = OpenThemeData(_hwndNotify, L"TrayNotify");
+    //_hTheme = OpenThemeData(_hwndNotify, L"TrayNotify");
+    _hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwndNotify, L"TrayNotify",0);
+
 
     _UpdateChevronSize();
     SetWindowStyleEx(_hwndNotify, WS_EX_STATICEDGE, !_hTheme);

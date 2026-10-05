@@ -3,6 +3,7 @@
 #include "trayclok.h"
 #include "tray.h"
 #include "util.h"
+#include "ThemeManager.h"
 
 class CClockCtl : public CImpWndProc
 {
@@ -121,7 +122,9 @@ LRESULT CClockCtl::_HandleCreate()
 
     _EnsureFontsInitialized(FALSE);
 
-    _hTheme = OpenThemeData(_hwnd, L"Clock");
+   //1 _hTheme = OpenThemeData(_hwnd, L"Clock");
+    _hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwnd, L"Clock",0);
+
 
     _fShowSeconds = SHRegGetBoolUSValue(REGSTR_EXPLORER_ADVANCED, TEXT("ShowSecondsInSystemClock"), FALSE, FALSE);
 
@@ -732,7 +735,9 @@ void CClockCtl::_HandleThemeChanged(WPARAM wParam)
 
     if (wParam)
     {
-        _hTheme = OpenThemeData(_hwnd, L"Clock");
+       // _hTheme = OpenThemeData(_hwnd, L"Clock");
+        _hTheme = OpenThemeData(g_loadedTheme,_hwnd, L"Clock",0);
+
     }
     InvalidateRect(_hwnd, NULL, TRUE);
 }

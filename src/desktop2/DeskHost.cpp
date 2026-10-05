@@ -6,6 +6,7 @@
 #include "hostutil.h"
 #include "deskhost.h"
 #include "util.h"
+#include "ThemeManager.h"
 
 
 #define TF_DV2HOST  0
@@ -1957,7 +1958,9 @@ void CDesktopHost::LoadPanelMetrics()
     ASSERT(!_hTheme);
     // only try to use themes if our color depth is greater than 8bpp.
     if (SHGetCurColorRes() > 8)
-        _hTheme = OpenThemeData(_hwnd, STARTPANELTHEME);
+        //_hTheme = OpenThemeData(_hwnd, STARTPANELTHEME);
+        _hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwnd, STARTPANELTHEME,0);
+
 
     IsThemeClassDefined = (decltype(IsThemeClassDefined))GetProcAddress(GetModuleHandle(L"uxtheme.dll"), (LPSTR)0x32);
 

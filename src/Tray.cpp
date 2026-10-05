@@ -6,6 +6,7 @@
 #include "trayclok.h"
 #include "util.h"
 #include "tray.h"
+#include "ThemeManager.h"
 
 #if defined(FE_IME)
 #include <immp.h>
@@ -392,7 +393,9 @@ HFONT CTray::_CreateStartFont(HWND hwndTray)
 {
 	HFONT hfontStart = NULL;
 
-	HTHEME hthemeStart = OpenThemeData(hwndTray, L"Button");
+	//HTHEME hthemeStart = OpenThemeData(hwndTray, L"Button");
+	HTHEME hthemeStart = OpenThemeDataFromFile(OpenThemeDataFromFile,hwndTray, L"Button",0);
+
 	if (hthemeStart)
 	{
 		LOGFONT lf;
@@ -1458,7 +1461,9 @@ LRESULT CTray::_OnCreate(HWND hwnd)
 
     _AdjustMinimizedMetrics();
 
-    _hTheme = OpenThemeData(hwnd, c_wzTaskbarTheme);
+    //_hTheme = OpenThemeData(hwnd, c_wzTaskbarTheme);
+    _hTheme = OpenThemeDataFromFile(g_loadedTheme,hwnd, c_wzTaskbarTheme,0);
+
 
     _fShowSizingBarAlways = (_uAutoHide & AH_ON) ? TRUE : FALSE;
     if (_hTheme)
@@ -6794,7 +6799,9 @@ LRESULT CTray::v_WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         }
         if (wParam)
         {
-            _hTheme = OpenThemeData(_hwnd, c_wzTaskbarTheme);
+            //_hTheme = OpenThemeData(_hwnd, c_wzTaskbarTheme);
+            _hTheme = OpenThemeDataFromFile(g_loadedTheme,_hwnd, c_wzTaskbarTheme,0);
+
             _fShowSizingBarAlways = (_uAutoHide & AH_ON) ? TRUE : FALSE;
             if (_hTheme)
             {
