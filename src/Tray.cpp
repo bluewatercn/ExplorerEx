@@ -1011,10 +1011,10 @@ void CTray::_MakeStuckRect(LPRECT prcStick, LPCRECT prcBound, SIZE size, UINT uS
         _AdjustRectForSizingBar(uStick, prcStick, 1);
     }
 
-    if (!_hTheme)
+    /*if (!_hTheme)
     {
         InflateRect(prcStick, g_cxEdge, g_cyEdge);
-    }
+    }*/
 
     if (size.cx < 0) size.cx *= -1;
     if (size.cy < 0) size.cy *= -1;
