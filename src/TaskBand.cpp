@@ -14,7 +14,7 @@
 #include "trayp.h"
 #include "dpa.h"
 #include "winuserp.h"
-
+#include "ThemeManager.h"
 
 #define TIF_RENDERFLASHED       0x000000001
 #define TIF_SHOULDTIP           0x000000002
