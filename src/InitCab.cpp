@@ -7,6 +7,7 @@
 #include "shdguid.h"    // for IID_IShellService
 #include "tray.h"
 #include "util.h"
+#include "ThemeManager.h"
 
 // global so that it is shared between TS sessions
 #define SZ_SCMCREATEDEVENT_NT5  TEXT("Global\\ScmCreatedEvent")
@@ -1870,6 +1871,7 @@ public:
 
 int ExplorerWinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPTSTR pszCmdLine, int nCmdShow)
 {
+    ThemeManagerInitialize();
 #ifndef RELEASE
 	AllocConsole();
 	FILE* pFile;
