@@ -1004,6 +1004,12 @@ void CTray::_AdjustRectForSizingBar(UINT uStuckPlace, LPRECT prc, int iIncrement
 // fClip determines whether to clip the rectangle if it's off the display or move it onto the screen
 void CTray::_MakeStuckRect(LPRECT prcStick, LPCRECT prcBound, SIZE size, UINT uStick)
 {
+    if (!_hTheme)
+    {
+        //test
+        OutputDebugStringW(L"ExplorerEx: _hTheme == NULL in _MakeStuckRect\n");
+
+    }
     CopyRect(prcStick, prcBound);
 
     if (_hTheme && (_fCanSizeMove || _fShowSizingBarAlways))
@@ -6791,7 +6797,7 @@ LRESULT CTray::v_WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     }
 
     case WM_THEMECHANGED:
-    {
+/* {
         if (_hTheme)
         {
             CloseThemeData(_hTheme);
@@ -6821,7 +6827,7 @@ LRESULT CTray::v_WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         ::PostMessage(_hwnd, SBM_REBUILDMENU, 0, 0);
 
         SetWindowStyle(_hwnd, WS_BORDER | WS_THICKFRAME, !_hTheme);
-    }
+    }*/
     break;
 
     case TM_WORKSTATIONLOCKED:
