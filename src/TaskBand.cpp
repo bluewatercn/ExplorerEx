@@ -5818,7 +5818,7 @@ LRESULT CTaskBand::_HandleWinIniChange(WPARAM wParam, LPARAM lParam, BOOL fOnCre
 
 void CTaskBand::_VerifyButtonHeight()
 {
-    SIZE size = { 0, _GetCurButtonHeight() };
+    SIZE size = { 0, 0 };
     _tb.SetButtonSize(size);
 
     _BandInfoChanged();

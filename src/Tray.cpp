@@ -2974,7 +2974,7 @@ void CTray::SizeWindows()
     InvalidateRect(_hwnd, NULL, TRUE);
 
     // position the view
-    SetWindowPos(_hwndRebar, NULL, rcView.left, rcView.top,
+    SetWindowPos(_hwndRebar, NULL, rcView.left, rcView.top + 2,
         RECTWIDTH(rcView), RECTHEIGHT(rcView),
         SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOCOPYBITS);
     UpdateWindow(_hwndRebar);
