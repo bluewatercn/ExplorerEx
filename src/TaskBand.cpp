@@ -4514,8 +4514,8 @@ LRESULT CTaskBand::_HandleCreate()
         _tb.SetButtonStructSize();
 
         // initial size
-        SIZE size = {0, 0};
-        _tb.SetButtonSize(size);
+        //SIZE size = {0, 0};
+        //_tb.SetButtonSize(size);
 
         _tb.SetExtendedStyle( TBSTYLE_EX_TRANSPARENTDEADAREA | 
                                 TBSTYLE_EX_FIXEDDROPDOWN | 
@@ -5818,8 +5818,7 @@ LRESULT CTaskBand::_HandleWinIniChange(WPARAM wParam, LPARAM lParam, BOOL fOnCre
 
 void CTaskBand::_VerifyButtonHeight()
 {
-    // force toolbar to get new sizes
-    SIZE size = {0, 0};
+    SIZE size = { 0, _GetCurButtonHeight() };
     _tb.SetButtonSize(size);
 
     _BandInfoChanged();
@@ -5830,12 +5829,9 @@ int CTaskBand::_GetCurButtonHeight()
     TBMETRICS tbm;
     _GetToolbarMetrics(&tbm);
 
-    int cyButtonHeight = HIWORD(_tb.GetButtonSize());
-
-    int cyExpected = g_cySize + 8;
-
-    if (cyButtonHeight < cyExpected)
-        cyButtonHeight = cyExpected;
+//    int cyButtonHeight = HIWORD(_tb.GetButtonSize());
+//    if (!cyButtonHeight)
+      int cyButtonHeight = tbm.cyPad + g_cySize;
 
     return cyButtonHeight;
 }
